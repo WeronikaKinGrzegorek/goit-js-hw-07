@@ -39,6 +39,7 @@ gallery.addEventListener("click", (event) => {
           if (e.key === "Escape") {
             instance.close();
           }
+          document.removeEventListener("keydown", e);
         });
       },
     }
