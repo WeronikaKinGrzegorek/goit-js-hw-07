@@ -35,12 +35,13 @@ gallery.addEventListener("click", (event) => {
 `,
     {
       onShow: (instance) => {
-        document.addEventListener("keydown", (e) => {
+        const handler = (e) => {
           if (e.key === "Escape") {
             instance.close();
+            document.removeEventListener("keydown", handler);
           }
-          document.removeEventListener("keydown", e);
-        });
+        };
+        document.addEventListener("keydown", handler);
       },
     }
   );
