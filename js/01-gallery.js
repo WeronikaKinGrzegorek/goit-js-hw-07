@@ -34,18 +34,19 @@ gallery.addEventListener("click", (event) => {
     <img src="${event.target.dataset.source}" width="800" height="600">
 `,
     {
-      onShow: (instance) => {
-        const handler = (e) => {
-          if (e.key === "Escape") {
-            instance.close();
-            document.removeEventListener("keydown", handler);
-          }
-        };
+      onShow: () => {
         document.addEventListener("keydown", handler);
+      },
+      onClose: () => {
+        document.removeEventListener("keydown", handler);
       },
     }
   );
-
+  const handler = (e) => {
+    if (e.key === "Escape") {
+      instance.close();
+    }
+  };
   instance.show();
 });
 
